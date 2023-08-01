@@ -16,9 +16,9 @@ jobs:
       - name: Checkout Code from Another Repository
         uses: actions/checkout@v2
         with:
-          repository: Current-Namaz/mnm-user
+          repository: MohamedAshraf701/expensify
           ref: master  
-          token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.TOKEN }}
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
@@ -26,14 +26,14 @@ jobs:
       - name: Build Flutter Web
         uses: bluefireteam/flutter-gh-pages@v7
         with:
-          baseHref: /mnm-user-beta-web/
+          baseHref: /expensifybuild/
         
       
       - name: Trigger Hello World Workflow
         env:
-          TARGET_REPO_OWNER: Current-Namaz  # Replace with the owner of the target repository
-          TARGET_REPO_NAME: mnm-user-beta-web   # Replace with the name of the target repository
-          GITHUB_TOKEN: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+          TARGET_REPO_OWNER: MohamedAshraf701  # Replace with the owner of the target repository
+          TARGET_REPO_NAME: expensifybuild   # Replace with the name of the target repository
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
