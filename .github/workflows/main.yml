@@ -1,0 +1,42 @@
+name: Hello World and Flutter Web Build
+
+on:
+  repository_dispatch:
+    types:
+      - hello-world
+
+jobs:
+  build-flutter-web:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, World!"
+
+      - name: Checkout Code from Another Repository
+        uses: actions/checkout@v2
+        with:
+          repository: Current-Namaz/mnm-user
+          ref: master  
+          token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+
+      - name: Build Flutter Web
+        uses: bluefireteam/flutter-gh-pages@v7
+        with:
+          baseHref: /mnm-user-beta-web/
+        
+      
+      - name: Trigger Hello World Workflow
+        env:
+          TARGET_REPO_OWNER: Current-Namaz  # Replace with the owner of the target repository
+          TARGET_REPO_NAME: mnm-user-beta-web   # Replace with the name of the target repository
+          GITHUB_TOKEN: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+        run: |
+          curl -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$TARGET_REPO_OWNER/$TARGET_REPO_NAME/dispatches" \
+            -d '{"event_type": "sync-code"}'
