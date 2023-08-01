@@ -15,7 +15,7 @@ jobs:
     - name: repo-sync
       uses: repo-sync/github-sync@v2
       with:
-        source_repo: https://${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}@github.com/Current-Namaz/mnm-user
+        source_repo: https://${{ secrets.TOKEN }}@github.com/MohamedAshraf701/expensify
         source_branch: gh-pages
         destination_branch: gh-pages
-        github_token: ${{ secrets.PRIVATE_REPO_ACCESS_TOKEN }}
+        github_token: ${{ secrets.TOKEN }}
