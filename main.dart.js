@@ -49514,7 +49514,7 @@ this.b.push(b)},
 $S:324}
 A.NJ.prototype={
 I(a){var s=null
-return new A.za(new A.Ig(s),"Flutter Demo",A.awn(s,B.m,s,s),!1,new A.xC(new A.abZ()),s)}}
+return new A.za(new A.Ig(s),"Expensify",A.awn(s,B.m,s,s),!1,new A.xC(new A.abZ()),s)}}
 A.abZ.prototype={
 $0(){var s,r,q,p,o,n,m,l=null,k="[DEFAULT]",j=$.bL(),i=$.dS,h=(i==null?$.dS=$.jL():i).jn(0,k)
 i=$.iH()
